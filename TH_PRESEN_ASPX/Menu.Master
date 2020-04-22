@@ -1,0 +1,467 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Menu.master.cs" Inherits="TH_PRESEN_ASPX_GC.Menu"  %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <%--    Estillos--%>
+    <%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">--%>
+
+    <link href="<%=ResolveUrl("~/css/font-awesome.min.css")%>" rel="stylesheet" type="text/css" />
+
+    <%--    <link href="Content/bootstrap.min.css" rel="stylesheet" />--%>
+
+    <link href="<%=ResolveUrl("~/Content/bootstrap.min.css")%>" rel="stylesheet" type="text/css" />
+    <%--    <link href="css/ionicons.css" rel="stylesheet" type="text/css" />--%>
+    <link href="<%=ResolveUrl("~/dist/css/AdminLTE.min.css")%>" rel="stylesheet" type="text/css" />
+    <link href="<%=ResolveUrl("~/dist/css/skins/_all-skins.min.css")%>" rel="stylesheet"
+        type="text/css" />
+
+
+    <link href="<%=ResolveUrl("~/css/HelpTecno.css")%>" rel="stylesheet" type="text/css" />
+
+    <link rel="shortcut icon" type="image/ico" href="plugins/datatables/examples/favicon.ico" />
+    <script src="<%=ResolveUrl("~/js/FuncionesEspeciales/ValidacionesGrl.js")%>"
+        type="text/javascript"></script>
+
+
+    <%--  muestro un msj por pantalla--%>
+    <%--    <script src="<%=ResolveUrl("~/js/msj/bootbox.min.js")%>"
+        type="text/javascript"></script>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>G</b>C</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Granja</b> Camila</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <%--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">--%>
+
+                                <img src="<%=ResolveUrl("~/dist/img/logo-granja-camila_58tnhjse.png")%>" class="user-image" alt="User Image" />
+
+
+                                <span class="hidden-xs">
+
+                                    <asp:Label ID="lblUsuario" runat="server" Text="Label"></asp:Label>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="<%=ResolveUrl("~/dist/img/logo-granja-camila_ti7xblwy.png")%>" class="img-circle" alt="User Image" />
+
+                                    <p>
+                                        <%--Alexander Pierce - Web Developer--%>
+                                        <%--<small>Member since Nov. 2012</small>--%>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <%--<a href="#" class="btn btn-default btn-flat">Profile</a>--%>
+                                        <input id="btnPerfil" type="button" value="Perfil" class="btn btn-default btn-flat" runat="server" />
+                                    </div>
+                                    <div class="pull-right">
+                                        <%--<a href="#" class="btn btn-default btn-flat">Sign out</a>--%>
+                                        <%--<asp:Button ID="Button1" runat="server" Text="Sign out" CssClass="btn btn-default btn-flat"></asp:Button>--%>
+                                        <input id="btnCerrarSession" type="button" value="Cerrar Sesion" class="btn btn-default btn-flat" runat="server" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <%--          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>--%>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <%--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--%>
+                        <img src="<%=ResolveUrl("~/dist/img/logo-granja-camila_58tnhjse.png")%>" class="img-circle" alt="User Image" />
+
+                    </div>
+                    <div class="pull-left info" runat="server">
+                        <p id="idmsj" runat="server">
+                            <%-- <asp:Label ID="lblUsuarioNP" runat="server" Text="txt"></asp:Label>--%>
+                            <asp:Label ID="lblNP" runat="server" Text="label"></asp:Label>
+                        </p>
+                        <%--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>--%>
+                    </div>
+                </div>
+                <!-- search form -->
+
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="header">Menu</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-user"></i><span>Usuario</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="<%=ResolveUrl("~/empleado/Nuevo.aspx")%>"><i class="glyphicon glyphicon-plus"></i>Nuevo</a></li>
+
+                            <%--<li><a href="<%=ResolveUrl("~/empleado/Listado.aspx")%>"><i class="glyphicon glyphicon-list-alt"></i>Listado</a></li>--%>
+
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span>Listado</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/empleado/ListadoActivos.aspx")%>"><i class="fa fa-circle-o"></i>Activos</a></li>
+                                    <li><a href="<%=ResolveUrl("~/empleado/ListadoNoActivos.aspx")%>"><i class="fa fa-circle-o"></i>No Activos</a></li>
+                                    <%--                                    <li><a href="<%=ResolveUrl("~/Alumno/AutorizanteRetiro.aspx")%>"><i class="fa fa-circle-o"></i>Retirar Alumno </a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Madre.aspx")%>"><i class="fa fa-circle-o"></i>Madre/Tutor</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Padre.aspx")%>"><i class="fa fa-circle-o"></i>Padre/Tutor</a></li>--%>
+                                </ul>
+                            </li>
+
+
+                            <li><a href="<%=ResolveUrl("~/empleado/ModificarEmpleado .aspx")%>"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
+                            <li><a href="<%=ResolveUrl("~/empleado/Eliminar.aspx")%>"><i class="glyphicon glyphicon-trash"></i>Baja</a></li>
+                            <li><a href="<%=ResolveUrl("~/empleado/CambioClave.aspx")%>"><i class="glyphicon glyphicon-lock"></i>Cambio de Clave</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-home"></i><span>Proveedor</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active"><a href="<%=ResolveUrl("~/proveedor/Nuevo.aspx")%>"><i class="glyphicon glyphicon-plus"></i>Nuevo</a></li>
+                   <%--         <li><a href="<%=ResolveUrl("~/proveedor/Listado.aspx")%>"><i class="glyphicon glyphicon-list-alt"></i>Listado</a></li>--%>
+
+
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span>Listado</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/proveedor/ListadoActivo.aspx")%>"><i class="fa fa-circle-o"></i>Activos</a></li>
+                                    <li><a href="<%=ResolveUrl("~/proveedor/ListadoNoActivo.aspx")%>"><i class="fa fa-circle-o"></i>No Activos</a></li>
+                                    <%--                                    <li><a href="<%=ResolveUrl("~/Alumno/AutorizanteRetiro.aspx")%>"><i class="fa fa-circle-o"></i>Retirar Alumno </a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Madre.aspx")%>"><i class="fa fa-circle-o"></i>Madre/Tutor</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Padre.aspx")%>"><i class="fa fa-circle-o"></i>Padre/Tutor</a></li>--%>
+                                </ul>
+                            </li>
+
+                            <li><a href="<%=ResolveUrl("~/proveedor/Modificar.aspx")%>"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
+                            <li><a href="<%=ResolveUrl("~/proveedor/Eliminar.aspx")%>"><i class="glyphicon glyphicon-trash"></i>Baja</a></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>Producto</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/proveedor/producto/Nuevo.aspx")%>"><i class="fa fa-circle-o"></i>Nuevo</a></li>
+                                    <%--                                    <li><a href="<%=ResolveUrl("~/Alumno/AutorizanteRetiro.aspx")%>"><i class="fa fa-circle-o"></i>Retirar Alumno </a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Madre.aspx")%>"><i class="fa fa-circle-o"></i>Madre/Tutor</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Padre.aspx")%>"><i class="fa fa-circle-o"></i>Padre/Tutor</a></li>--%>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            <span>Comprar</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="<%=ResolveUrl("~/compra/Nuevo.aspx")%>"><i class="glyphicon glyphicon-plus"></i>Generar Orden</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>Modificar</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/Rol/Modificar.aspx")%>"><i class="fa fa-circle-o"></i>Permisos de Rol</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Rol/Rol.aspx")%>"><i class="fa fa-circle-o"></i>Rol</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span>Listado</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/compra/ListadoGeneral.aspx")%>"><i class="fa fa-circle-o"></i>General</a></li>
+                                    <li><a href="<%=ResolveUrl("~/compra/ListadoAutorizado.aspx")%>"><i class="fa fa-circle-o"></i>Autorizado</a></li>
+                                    <li><a href="<%=ResolveUrl("~/compra/ListadoPendiente.aspx")%>"><i class="fa fa-circle-o"></i>Pendiente Autorizar</a></li>
+                                </ul>
+                            </li>
+<%--                            <li><a href="#"><i class="fa fa-circle-o"></i>Eliminar</a></li>--%>
+<%--                            <li><a href="<%=ResolveUrl("~/Rol/Listar.aspx")%>"><i class="fa fa-circle-o"></i>Listado</a></li>--%>
+                            <li><a href="<%=ResolveUrl("~/compra/Autorizacion.aspx")%>"><i class="glyphicon glyphicon-plus"></i>Autorizacion</a></li>
+                        </ul>
+                    </li>
+<%--                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-pie-chart"></i>
+                            <span>Rol</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="<%=ResolveUrl("~/Rol/Nuevo.aspx")%>"><i class="fa fa-circle-o"></i>Nuevo</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>Modificar</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/Rol/Modificar.aspx")%>"><i class="fa fa-circle-o"></i>Permisos de Rol</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Rol/Rol.aspx")%>"><i class="fa fa-circle-o"></i>Rol</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Eliminar</a></li>
+                            <li><a href="<%=ResolveUrl("~/Rol/Listar.aspx")%>"><i class="fa fa-circle-o"></i>Listado</a></li>
+                        </ul>
+                    </li>--%>
+<%--                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-laptop"></i>
+                            <span>Alumno</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="<%=ResolveUrl("~/Alumno/Inscripciones.aspx")%>"><i class="fa fa-circle-o"></i>Inscripción</a></li>
+                            <li><a href="<%=ResolveUrl("~/Alumno/Nuevo.aspx")%>"><i class="fa fa-circle-o"></i>Nuevo</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>Agregar</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/Alumno/FichaMedica.aspx")%>"><i class="fa fa-circle-o"></i>Ficha Medica</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/AutorizanteRetiro.aspx")%>"><i class="fa fa-circle-o"></i>Retirar Alumno </a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Madre.aspx")%>"><i class="fa fa-circle-o"></i>Madre/Tutor</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/Padre.aspx")%>"><i class="fa fa-circle-o"></i>Padre/Tutor</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>Modificar</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="<%=ResolveUrl("~/Alumno/ModificarAlumno.aspx")%>"><i class="fa fa-circle-o"></i>Datos del Alumno</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/ModificarOtrosDatos.aspx")%>"><i class="fa fa-circle-o"></i>Otros Datos</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/ModificarResponsableMadre.aspx")%>"><i class="fa fa-circle-o"></i>Madre/Tutor</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/ModificarResponsablePadre.aspx")%>"><i class="fa fa-circle-o"></i>Padre/Tutor</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/ModificarFichaMedica.aspx")%>"><i class="fa fa-circle-o"></i>Ficha Medica</a></li>
+                                    <li><a href="<%=ResolveUrl("~/Alumno/ModificarResponsableRetiro.aspx")%>"><i class="fa fa-circle-o"></i>Autorizado Retiro</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Eliminar</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Listar</a></li>
+                        </ul>
+                    </li>--%>
+<%--                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-edit"></i><span>Secciones</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="<%=ResolveUrl("~/Secciones/Nuevo.aspx")%>"><i class="fa fa-circle-o"></i>Nuevo</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Modificar</a></li>
+                            <li><a href="<%=ResolveUrl("~/Secciones/Listar.aspx")%>"><i class="fa fa-circle-o"></i>Listar</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Eliminar</a></li>
+                        </ul>
+                    </li>--%>
+<%--                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-table"></i><span>Tables</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Simple tables</a></li>
+                            <li><a href="#"><i class="fa fa-circle-o"></i>Data tables</a></li>
+                        </ul>
+                    </li>--%>
+<%--                    <li>
+                        <a href="#">
+                            <i class="fa fa-calendar"></i><span>Calendar</span>
+
+                        </a>
+                    </li>--%>
+                    <%--        <li>
+          <a href="#">
+            <i class="fa fa-envelope"></i> <span>Mailbox</span>
+          </a>
+        </li>--%>
+                    <%--        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-folder"></i> <span>Examples</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> 404 Error</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> 500 Error</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Blank Page</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+          </ul>
+        </li>--%>
+                    <%--        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i> Level One
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                <li>
+                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+          </ul>
+        </li>--%>
+                    <li><a href="#"><i class="fa fa-book"></i><span>Documentation</span></a></li>
+
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- content-wrapper mostramos que paginas queres que este precargadas -->
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+
+                    <form id="form1" runat="server">
+                        <div>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 0.0.1
+            </div>
+            <strong>Copyright &copy; 2020-2021 <a href="http://helptecno.com/">Help Tecno</a>.</strong> Desarrollo de Software
+        </footer>
+        <div class="control-sidebar-bg">
+        </div>
+    </div>
+
+
+<%--    <script src="<%=ResolveUrl("~/js/jquery/3.4.1/jquery.min.js")%>"></script>--%>
+        <script src="<%=ResolveUrl("~/Scripts/jquery-3.3.1.min.js")%>"></script>
+    <%--1--%>
+    <script src="<%=ResolveUrl("~/Scripts/bootstrap.min.js")%>"></script>
+    <%--2--%>
+    <script src="<%=ResolveUrl("~/plugins/slimScroll/jquery.slimscroll.min.js")%>"></script>
+    <%--3--%>
+    <script src="<%=ResolveUrl("~/dist/js/app.min.js")%>"></script>
+    <%--4--%>
+</body>
+</html>
