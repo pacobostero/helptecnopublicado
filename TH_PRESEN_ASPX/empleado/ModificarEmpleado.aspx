@@ -4,6 +4,7 @@
     <script src="../js/empleado/Modificar.js"></script>
     <script src="../js/FuncionesEspeciales/Telefono.js"></script>
     <script src="../js/FuncionesEspeciales/Mail.js"></script>
+    <script src="../js/FuncionesEspeciales/DropDownCombo.js"></script>
 
     <script type="text/javascript">
         // Broad cast that your're opening a page.
@@ -209,7 +210,7 @@
 
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <button runat="server" id="btnWarning" class="btn btn-warning" title="Modificar" onclick="DetalleItems(this);return false">
+                                        <button runat="server" id="btnWarning" class="btn btn-warning" title="Modificar" onclick="EditItems(this);return false">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </button>
                                     </ItemTemplate>
@@ -405,6 +406,184 @@
             </div>
         </div>
 
+        <%--ModalEditar--%>
+        <div id="modalEdit" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        </button>
+                        <h4 class="modal-title" id="h4TituloMensajeEdit">Detalle</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Nombre</label>
+                                        <input type="text" id="txtNombreEdit" class="form-control"
+                                            placeholder="Nombre" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Apellido</label>
+                                        <input type="text" id="txtApellidoEdit" class="form-control"
+                                            placeholder="Apellido" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Fecha Nacimiento</label>
+                                        <input type="text" id="txtFechaNacimientoEdit" class="form-control"
+                                            placeholder="Apellido" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Sexo</label>
+                                        <asp:DropDownList ID="drpdSexoEdit" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7" autofocus="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <%--                                        <label for="subject">
+                                            Tipo Doc</label>
+                                        <input type="text" runat="server" id="txtTipoDocumentoEdit" class="form-control"
+                                            placeholder="Nombre" style="background-color: #F3F2D7" />--%>
+                                        <label for="subject">
+                                            Tipo Doc</label>
+                                        <asp:DropDownList ID="drpdTipoDocumentoEdit" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7" autofocus="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Nro</label>
+                                        <input type="text" runat="server" id="txtNroDocEdit" class="form-control"
+                                            placeholder="Apellido" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Direccion</label>
+                                        <input type="text" runat="server" id="txtDireccionEdit" class="form-control"
+                                            placeholder="Direccion" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Nro.</label>
+                                        <input type="text" runat="server" id="txtDireccionNroEdit" class="form-control"
+                                            placeholder="Nro." style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Codigo Postal</label>
+                                        <input type="text" runat="server" id="txtCodPostalEdit" class="form-control"
+                                            placeholder="Codigo Postal" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Nacionalidad</label>
+                                        <asp:DropDownList ID="drpdNacionalidadEdit" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7" autofocus="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Perfil</label>
+                                        <asp:DropDownList ID="drpdPerfilEdit" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7" autofocus="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Estado</label>
+                                        <asp:DropDownList ID="drpdEstadoEdit" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7" autofocus="true">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <h5 class="modal-title" id="h5TituloTelefonoEdit">Teléfono</h5>
+                            <div class="row">
+                                <div class="col-md-12" style="width: 100%; height: 150px; overflow: scroll">
+                                    <table id="tableTelefonoEdit" class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="hide">#</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Nro.</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyTelefoEdit"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <h5 class="modal-title" id="h5TituloMailEdit">Correo Electrónico</h5>
+
+                            <div class="row">
+                                <div class="col-md-12" style="width: 100%; height: 150px; overflow: scroll">
+                                    <table id="tableCorreoEdit" class="table table-dark">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="hide">#</th>
+                                                <th scope="col">Mail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyCorreoEdit"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-content">
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnEdit" class="btn btn-primary" data-dismiss="modal">
+                            Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 

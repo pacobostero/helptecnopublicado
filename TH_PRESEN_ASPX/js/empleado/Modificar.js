@@ -245,7 +245,7 @@ function LlenarTablaFiltro(response) {
 
             
             
-            $("td", row).eq(20).html("<button onclick=\'bajaEmpleado(this); return false;'\ class= \'btn btn-warning'\> <span class=\'glyphicon glyphicon-pencil'\></span></button> ");
+            $("td", row).eq(20).html("<button onclick=\'EditItems(this); return false;'\ class= \'btn btn-warning'\> <span class=\'glyphicon glyphicon-pencil'\></span></button> ");
 
             if (response.d[i].Estado.IdEstado != 3) {
                 $("td", row).eq(21).html("<button onclick=\'bajaEmpleado(this); return false;'\ class= \'btn btn-danger'\> <span class=\'glyphicon glyphicon-trash'\></span></button> ");
@@ -367,7 +367,7 @@ function LlenarTablaBaja(response) {
 
 
             $("td", row).eq(19).html("<button onclick=\'DetalleItems(this); return false;'\ class= \'btn btn-info'\> <span class=\'glyphicon glyphicon-list-alt'\></span></button> ");
-            $("td", row).eq(20).html("<button onclick=\'bajaEmpleado(this); return false;'\ class= \'btn btn-warning'\> <span class=\'glyphicon glyphicon-pencil'\></span></button> ");
+            $("td", row).eq(20).html("<button onclick=\'EditItems(this); return false;'\ class= \'btn btn-warning'\> <span class=\'glyphicon glyphicon-pencil'\></span></button> ");
             $("td", row).eq(21).html("<button onclick=\'bajaEmpleado(this); return false;'\ class= \'btn btn-danger'\> <span class=\'glyphicon glyphicon-trash'\></span></button> ");
             //$("td", row).eq(20).html("");
 
@@ -410,4 +410,90 @@ function DetalleItems(valor) {
     }
 }
 
+function EditItems(valor) {
+    try {
+        var row = valor.parentNode.parentNode;
 
+        $("input[ID$='txtNombreEdit']").val(row.cells[1].innerHTML);
+        $("input[ID$='txtApellidoEdit']").val(row.cells[2].innerHTML);
+        $("input[ID$='txtTipoDocumentoEdit']").val(row.cells[4].innerHTML);
+        $("input[ID$='txtNroDocEdit']").val(row.cells[5].innerHTML);
+        $("input[ID$='txtSexoEdit']").val(row.cells[7].innerHTML);
+        $("input[ID$='txtFechaNacimientoEdit']").val(row.cells[8].innerHTML);
+        $("input[ID$='txtDireccionEdit']").val(row.cells[9].innerHTML);
+        $("input[ID$='txtDireccionNroEdit']").val(row.cells[10].innerHTML);
+        $("input[ID$='txtCodPostalEdit']").val(row.cells[11].innerHTML);
+        $("input[ID$='txtNacionalidadEdit']").val(row.cells[13].innerHTML);
+        $("input[ID$='txtEstadoEdit']").val(row.cells[15].innerHTML);
+        $("input[ID$='txtPerfilEdit']").val(row.cells[17].innerHTML);
+        var uriTelefono = "ModificarEmpleado.aspx/ListadoTelefono";
+        var uriMail = "ModificarEmpleado.aspx/ListadoMail";
+
+        ListadoDetalleTelefono(row.cells[0].innerHTML, uriTelefono);
+        ListadoDetalleMail(row.cells[0].innerHTML, uriMail);
+
+        LlamarDropDownSexo("ModificarEmpleado.aspx/ComboSexo", "IdSexo", "Descripcion", "drpdSexoEdit", row.cells[6].innerHTML);
+
+        LlamarDropDownTipoDoc("ModificarEmpleado.aspx/ComboTipoDocumento", "IdTipoDocumento", "Descripcion", "drpdTipoDocumentoEdit", row.cells[3].innerHTML);
+
+        //Pais
+        LlamarDropDownPais("ModificarEmpleado.aspx/ComboPais", "IdPais", "Descripcion", "drpdNacionalidadEdit", row.cells[12].innerHTML);
+
+        //Rol
+        LlamarDropDownRol("ModificarEmpleado.aspx/ComboRol", "IdTipoRol", "Descripcion", "drpdPerfilEdit", row.cells[16].innerHTML);
+
+        //Estado
+        LlamarDropDownEstado("ModificarEmpleado.aspx/ComboEstado", "IdEstado", "Descripcion", "drpdEstadoEdit", row.cells[14].innerHTML);
+
+        
+        //PoblarDropDown();
+
+        $("#modalEdit").modal("show");
+
+    } catch (e) {
+
+    }
+}
+
+//var idValue = "";
+//var descripcionValue = "";
+
+//function PoblarDropDown() {
+//    idValue = "IdSexo";
+//    descripcionValue = "Descripcion";
+
+//    $.ajax({
+//        type: "POST",
+//        url: "ModificarEmpleado.aspx/ComboSexo",
+//        data: "",
+//        contentType: "application/json; charset=utf-8",
+//        dataType: "json",
+//        success: llenarCombo,
+//        failure: function (response) {
+//            //alert(response);
+//        },
+//        error: function (XMLHttpRequest, textStatus, errorThrown) {
+//            console.log(textStatus + ": " + XMLHttpRequest.responseText);
+//        }
+//    });
+
+//}
+
+
+//function llenarCombo(response) {
+//    try {
+
+//        $("[id*=drpdTipoDocumentoEdit]").empty(); 
+//        //$("[id*=drpdTipoDocumentoEdit]").append($("<option></option>").val("Seleccione...").html("Seleccione..."))
+//        $("[id*=drpdTipoDocumentoEdit]").append($("<option></option>").val("Seleccione...").html("Seleccione..."))
+
+//        for (var i = 0; i < response.d.length; i++) {
+//            //$("[id*=drpdTipoDocumentoEdit]").append($("<option></option>").val(response.d[i]['IdSexo']).html(response.d[i]['Descripcion']));
+//            $("[id*=drpdTipoDocumentoEdit]").append($("<option></option>").val(response.d[i][idValue]).html(response.d[i][descripcionValue]));
+//        }
+
+//    } catch (e) {
+
+//    }
+
+//}
