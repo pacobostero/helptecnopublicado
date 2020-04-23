@@ -1,6 +1,26 @@
 ﻿<%@ Page Title="Modificar Empleado" Language="C#" MasterPageFile="~/Menu.Master" AutoEventWireup="true" CodeBehind="ModificarEmpleado.aspx.cs" Inherits="TH_PRESEN_ASPX_GC.empleado.ModificarEmpleado" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="../js/empleado/Modificar.js"></script>
+    <script src="../js/FuncionesEspeciales/Telefono.js"></script>
+    <script src="../js/FuncionesEspeciales/Mail.js"></script>
+
+<script type="text/javascript">
+        // Broad cast that your're opening a page.
+        localStorage.openpages = Date.now();
+        var onLocalStorageEvent = function(e){
+            if(e.key == "openpages"){
+                // Listen if anybody else opening the same page!
+                localStorage.page_available = Date.now();
+            }
+            if(e.key == "page_available"){
+                alert("No puede tener mas de dos sesiones abiertas");
+                window.location.href = "../Login.aspx";
+            }
+        };
+        window.addEventListener('storage', onLocalStorageEvent, false);
+</script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -13,7 +33,7 @@
                     <div class="form-group">
                         <label for="subject">
                             Tipo Doc</label>
-                        <asp:DropDownList ID="drpdTipoDocumento" runat="server" CssClass="form-control ComboDropdown" onchange="SeleccionNroOrdenCompra();" Style="background-color: #F3F2D7"  autofocus="true">
+                        <asp:DropDownList ID="drpdTipoDocumento" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7"  autofocus="true">
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -21,14 +41,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Nro.</label>
-                        <input type="text" runat="server" id="txtGeneradoUsuario" class="form-control" 
+                        <input type="text" runat="server" id="txtNroDocFiltro" class="form-control" 
                             placeholder="Nro." oncut="return false" oncopy="return false" autocomplete="off" maxlength="100" style="background-color: #F3F2D7" />
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -37,14 +57,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Nombre</label>
-                        <input type="text" runat="server" id="Text1" class="form-control" 
+                        <input type="text" runat="server" id="txtNombreFiltro" class="form-control" 
                             placeholder="Nombre" oncut="return false" oncopy="return false" autocomplete="off" maxlength="100" style="background-color: #F3F2D7" />
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -53,14 +73,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Apellido</label>
-                        <input type="text" runat="server" id="Text2" class="form-control" 
+                        <input type="text" runat="server" id="txtApellidoFiltro" class="form-control" 
                             placeholder="Apellido" oncut="return false" oncopy="return false" autocomplete="off" maxlength="100" style="background-color: #F3F2D7" />
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -70,14 +90,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Sexo</label>
-                        <asp:DropDownList ID="drpdSexo" runat="server" CssClass="form-control ComboDropdown" onchange="SeleccionNroOrdenCompra();" Style="background-color: #F3F2D7"  autofocus="true">
+                        <asp:DropDownList ID="drpdSexo" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7">
                         </asp:DropDownList>
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -85,14 +105,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Estado</label>
-                        <asp:DropDownList ID="drpdEstado" runat="server" CssClass="form-control ComboDropdown" onchange="SeleccionNroOrdenCompra();" Style="background-color: #F3F2D7"  autofocus="true">
+                        <asp:DropDownList ID="drpdEstado" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7" >
                         </asp:DropDownList>
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -101,14 +121,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Nacionalidad</label>
-                        <asp:DropDownList ID="drpdPais" runat="server" CssClass="form-control ComboDropdown" onchange="SeleccionNroOrdenCompra();" Style="background-color: #F3F2D7"  autofocus="true">
+                        <asp:DropDownList ID="drpdPais" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7" >
                         </asp:DropDownList>
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -117,14 +137,14 @@
                     <div class="input-group">
                         <label for="subject">
                             Perfil</label>
-                        <asp:DropDownList ID="drpdPerfil" runat="server" CssClass="form-control ComboDropdown" onchange="SeleccionNroOrdenCompra();" Style="background-color: #F3F2D7" autofocus="true">
+                        <asp:DropDownList ID="drpdPerfil" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7" >
                         </asp:DropDownList>
                         <br />
                         <br />
                         <br />
                         <br />
                         <span class="input-group-btn">
-                            <button class="btn btn-success" type="button" onclick="LlenarTablaMail(); return false;"><span class="glyphicon glyphicon-search"></span></button>
+                            <button class="btn btn-success" type="button" onclick="ListadoFiltroEmpleado(); return false;"><span class="glyphicon glyphicon-search"></span></button>
                         </span>
                     </div>
                 </div>
@@ -142,32 +162,62 @@
                                 </asp:BoundField>
                                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                                 <asp:BoundField DataField="apellido" HeaderText="Apellido" />
-                                <asp:BoundField DataField="idTipoDocumento" HeaderText="idTipoDocumento" Visible="False" />
+                                <asp:BoundField DataField="idTipoDocumento" HeaderText="idTipoDocumento" >
+                                    <HeaderStyle CssClass="hide" />
+                                    <ItemStyle CssClass="hide" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="tipDocDescrip" HeaderText="Tipo Doc" />
                                 <asp:BoundField DataField="nroDocumento" HeaderText="Nro. Doc" />
-                                <asp:BoundField DataField="idSexo" HeaderText="idSexo" Visible="False" />
+                                <asp:BoundField DataField="idSexo" HeaderText="idSexo">
+                                    <HeaderStyle CssClass="hide" />
+                                    <ItemStyle CssClass="hide" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="sexoDescrip" HeaderText="Sexo" />
                                 <asp:BoundField DataField="fechaNacimiento" HeaderText="Fecha Nacimiento" />
                                 <asp:BoundField DataField="direccion" HeaderText="Dirección" />
                                 <asp:BoundField DataField="direccionNro" HeaderText="Nro." />
                                 <asp:BoundField DataField="codigoPostal" HeaderText="Cod. Postal" />
-                                <asp:BoundField DataField="idPais" HeaderText="idPais" Visible="False" />
+                                <asp:BoundField DataField="idPais" HeaderText="idPais" >
+                                    <HeaderStyle CssClass="hide" />
+                                    <ItemStyle CssClass="hide" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="paisDescrip" HeaderText="Nacionalidad" />
-                                <asp:BoundField DataField="idEstado" HeaderText="idEstado" Visible="False" />
+                                <asp:BoundField DataField="idEstado" HeaderText="idEstado">
+                                    <HeaderStyle CssClass="hide" />
+                                    <ItemStyle CssClass="hide" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="estadoDescrip" HeaderText="Estado" />
-                                <asp:BoundField DataField="idTipoRol" HeaderText="idTipoRol" Visible="False" />
+                                <asp:BoundField DataField="idTipoRol" HeaderText="idTipoRol">
+                                    <HeaderStyle CssClass="hide" />
+                                    <ItemStyle CssClass="hide" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="rolDescrip" HeaderText="Perfil" />
                                 <asp:BoundField DataField="fechaAlta" HeaderText="Fecha Alta" />
+
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <button runat="server" id="btnWarning" class="btn btn-warning" title="Search" onclick="llamarJson(this);return false">
+                                        <button runat="server" id="btnDetalle" class="btn btn-info" title="Detalle" onclick="DetalleItems(this);return false">
+                                            <span class="glyphicon glyphicon-list-alt"></span>
+                                        </button>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <button runat="server" id="btnWarning" class="btn btn-warning" title="Modificar" onclick="DetalleItems(this);return false">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </button>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
-                                        <button runat="server" id="btnDanger" class="btn btn-danger" title="Search" onclick="llamarJson(this);return false">
+                                        <button runat="server" id="btnDanger" class="btn btn-danger" title="Baja" onclick="bajaEmpleado(this);return false">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </button>
                                     </ItemTemplate>
@@ -178,15 +228,16 @@
                 </div>
             </div>
         </div>
+      
 
-        <!-- Modal Advertencia-->
-        <div id="modalAdvertencia" class="modal fade" data-backdrop="static">
-            <div class="modal-dialog">
+            <!-- Modal Advertencia-->
+        <div id="modalDetalle" class="modal fade" data-backdrop="static">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content ">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         </button>
-                        <h4 class="modal-title" id="h4TituloMensaje">Búsqueda</h4>
+                        <h4 class="modal-title" id="h4TituloMensaje">Detalle</h4>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-12">
@@ -292,4 +343,34 @@
         </div>
 
     </div>
+
+
+<%-- <div class="container"> 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dialogo1">Abrir ventana de diálogo</button>
+
+    <div class="modal fade" id="dialogo1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+    
+          <!-- cabecera del diálogo -->
+          <div class="modal-header">
+            <h4 class="modal-title">Título del diálogo</h4>
+            <button type="button" class="close" data-dismiss="modal">X</button>
+          </div>
+    
+          <!-- cuerpo del diálogo -->
+          <div class="modal-body">
+            Contenido del diálogo.
+          </div>
+    
+          <!-- pie del diálogo -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          </div>
+    
+        </div>
+      </div>
+    </div> 
+
+  </div>--%>
 </asp:Content>

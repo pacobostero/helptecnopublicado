@@ -64,7 +64,7 @@
 
         <!-- Modal Advertencia-->
         <div id="modalAdvertencia" class="modal fade" data-backdrop="static">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content ">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">

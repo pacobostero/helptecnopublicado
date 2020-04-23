@@ -159,7 +159,7 @@
                             </li>
 
 
-                            <li><a href="<%=ResolveUrl("~/empleado/ModificarEmpleado .aspx")%>"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
+                            <li><a href="<%=ResolveUrl("~/empleado/ModificarEmpleado.aspx")%>"><i class="glyphicon glyphicon-pencil"></i>Modificar</a></li>
                             <li><a href="<%=ResolveUrl("~/empleado/Eliminar.aspx")%>"><i class="glyphicon glyphicon-trash"></i>Baja</a></li>
                             <li><a href="<%=ResolveUrl("~/empleado/CambioClave.aspx")%>"><i class="glyphicon glyphicon-lock"></i>Cambio de Clave</a></li>
                         </ul>
