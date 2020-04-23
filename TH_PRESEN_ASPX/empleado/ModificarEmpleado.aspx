@@ -5,21 +5,21 @@
     <script src="../js/FuncionesEspeciales/Telefono.js"></script>
     <script src="../js/FuncionesEspeciales/Mail.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
         // Broad cast that your're opening a page.
         localStorage.openpages = Date.now();
-        var onLocalStorageEvent = function(e){
-            if(e.key == "openpages"){
+        var onLocalStorageEvent = function (e) {
+            if (e.key == "openpages") {
                 // Listen if anybody else opening the same page!
                 localStorage.page_available = Date.now();
             }
-            if(e.key == "page_available"){
+            if (e.key == "page_available") {
                 alert("No puede tener mas de dos sesiones abiertas");
                 window.location.href = "../Login.aspx";
             }
         };
         window.addEventListener('storage', onLocalStorageEvent, false);
-</script>
+    </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label for="subject">
                             Tipo Doc</label>
-                        <asp:DropDownList ID="drpdTipoDocumento" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7"  autofocus="true">
+                        <asp:DropDownList ID="drpdTipoDocumento" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7" autofocus="true">
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Nro.</label>
-                        <input type="text" runat="server" id="txtNroDocFiltro" class="form-control" 
+                        <input type="text" runat="server" id="txtNroDocFiltro" class="form-control"
                             placeholder="Nro." oncut="return false" oncopy="return false" autocomplete="off" maxlength="100" style="background-color: #F3F2D7" />
                         <br />
                         <br />
@@ -57,7 +57,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Nombre</label>
-                        <input type="text" runat="server" id="txtNombreFiltro" class="form-control" 
+                        <input type="text" runat="server" id="txtNombreFiltro" class="form-control"
                             placeholder="Nombre" oncut="return false" oncopy="return false" autocomplete="off" maxlength="100" style="background-color: #F3F2D7" />
                         <br />
                         <br />
@@ -73,7 +73,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Apellido</label>
-                        <input type="text" runat="server" id="txtApellidoFiltro" class="form-control" 
+                        <input type="text" runat="server" id="txtApellidoFiltro" class="form-control"
                             placeholder="Apellido" oncut="return false" oncopy="return false" autocomplete="off" maxlength="100" style="background-color: #F3F2D7" />
                         <br />
                         <br />
@@ -90,7 +90,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Sexo</label>
-                        <asp:DropDownList ID="drpdSexo" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7">
+                        <asp:DropDownList ID="drpdSexo" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7">
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -105,7 +105,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Estado</label>
-                        <asp:DropDownList ID="drpdEstado" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7" >
+                        <asp:DropDownList ID="drpdEstado" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7">
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -121,7 +121,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Nacionalidad</label>
-                        <asp:DropDownList ID="drpdPais" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7" >
+                        <asp:DropDownList ID="drpdPais" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7">
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -137,7 +137,7 @@
                     <div class="input-group">
                         <label for="subject">
                             Perfil</label>
-                        <asp:DropDownList ID="drpdPerfil" runat="server" CssClass="form-control ComboDropdown"  Style="background-color: #F3F2D7" >
+                        <asp:DropDownList ID="drpdPerfil" runat="server" CssClass="form-control ComboDropdown" Style="background-color: #F3F2D7">
                         </asp:DropDownList>
                         <br />
                         <br />
@@ -162,7 +162,7 @@
                                 </asp:BoundField>
                                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                                 <asp:BoundField DataField="apellido" HeaderText="Apellido" />
-                                <asp:BoundField DataField="idTipoDocumento" HeaderText="idTipoDocumento" >
+                                <asp:BoundField DataField="idTipoDocumento" HeaderText="idTipoDocumento">
                                     <HeaderStyle CssClass="hide" />
                                     <ItemStyle CssClass="hide" />
                                 </asp:BoundField>
@@ -179,7 +179,7 @@
                                 <asp:BoundField DataField="direccion" HeaderText="Dirección" />
                                 <asp:BoundField DataField="direccionNro" HeaderText="Nro." />
                                 <asp:BoundField DataField="codigoPostal" HeaderText="Cod. Postal" />
-                                <asp:BoundField DataField="idPais" HeaderText="idPais" >
+                                <asp:BoundField DataField="idPais" HeaderText="idPais">
                                     <HeaderStyle CssClass="hide" />
                                     <ItemStyle CssClass="hide" />
                                 </asp:BoundField>
@@ -228,9 +228,9 @@
                 </div>
             </div>
         </div>
-      
 
-            <!-- Modal Advertencia-->
+
+        <!-- Modal Advertencia-->
         <div id="modalDetalle" class="modal fade" data-backdrop="static">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content ">
@@ -262,14 +262,23 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="subject">
-                                            Sexo</label>
-                                        <input type="text" id="txtSexo" class="form-control" required="required"
+                                            Fecha Nacimiento</label>
+                                        <input type="text" id="txtFechaNacimiento" class="form-control" required="required"
                                             placeholder="Apellido" readonly="true" style="background-color: #F3F2D7" />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Sexo</label>
+                                        <input type="text" id="txtSexo" class="form-control" required="required"
+                                            placeholder="Apellido" readonly="true" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="subject">
@@ -286,6 +295,49 @@
                                             placeholder="Apellido" readonly="true" style="background-color: #F3F2D7" />
                                     </div>
                                 </div>
+
+                            </div>
+
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Direccion</label>
+                                        <input type="text" runat="server" id="txtDireccion" class="form-control" required="required"
+                                            placeholder="Direccion" readonly="true" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Nro.</label>
+                                        <input type="text" runat="server" id="txtDireccionNro" class="form-control" required="required"
+                                            placeholder="Nro." readonly="true" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Codigo Postal</label>
+                                        <input type="text" runat="server" id="txtCodPostal" class="form-control" required="required"
+                                            placeholder="Codigo Postal" readonly="true" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Nacionalidad</label>
+                                        <input type="text" runat="server" id="txtNacionalidad" class="form-control" required="required"
+                                            placeholder="Nacionalidad" readonly="true" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="subject">
@@ -294,6 +346,17 @@
                                             placeholder="Apellido" readonly="true" style="background-color: #F3F2D7" />
                                     </div>
                                 </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="subject">
+                                            Estado</label>
+                                        <input type="text" runat="server" id="txtEstado" class="form-control" required="required"
+                                            placeholder="Apellido" readonly="true" style="background-color: #F3F2D7" />
+                                    </div>
+                                </div>
+
+
                             </div>
 
                             <h5 class="modal-title" id="h5TituloTelefono">Teléfono</h5>
@@ -345,7 +408,7 @@
     </div>
 
 
-<%-- <div class="container"> 
+    <%-- <div class="container"> 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dialogo1">Abrir ventana de diálogo</button>
 
     <div class="modal fade" id="dialogo1">

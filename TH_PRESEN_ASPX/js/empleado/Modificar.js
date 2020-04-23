@@ -387,11 +387,16 @@ function DetalleItems(valor) {
 
             $("input[ID$='txtNombre']").val(row.cells[1].innerHTML);
             $("input[ID$='txtApellido']").val(row.cells[2].innerHTML); 
-            $("input[ID$='txtTipoDocumento']").val(row.cells[4].innerHTML) 
-            $("input[ID$='txtNroDoc']").val(row.cells[5].innerHTML) 
-            $("input[ID$='txtSexo']").val(row.cells[7].innerHTML) 
-
-            $("input[ID$='txtPerfil']").val(row.cells[15].innerHTML) 
+            $("input[ID$='txtTipoDocumento']").val(row.cells[4].innerHTML); 
+            $("input[ID$='txtNroDoc']").val(row.cells[5].innerHTML); 
+            $("input[ID$='txtSexo']").val(row.cells[7].innerHTML); 
+            $("input[ID$='txtFechaNacimiento']").val(row.cells[8].innerHTML); 
+            $("input[ID$='txtDireccion']").val(row.cells[9].innerHTML); 
+            $("input[ID$='txtDireccionNro']").val(row.cells[10].innerHTML); 
+            $("input[ID$='txtCodPostal']").val(row.cells[11].innerHTML); 
+            $("input[ID$='txtNacionalidad']").val(row.cells[13].innerHTML); 
+            $("input[ID$='txtEstado']").val(row.cells[15].innerHTML); 
+            $("input[ID$='txtPerfil']").val(row.cells[17].innerHTML); 
             var uriTelefono = "ModificarEmpleado.aspx/ListadoTelefono";
             var uriMail = "ModificarEmpleado.aspx/ListadoMail";
 
